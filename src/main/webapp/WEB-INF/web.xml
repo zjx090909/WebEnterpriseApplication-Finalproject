@@ -27,12 +27,12 @@
         <display-name>Bouncer Pages Login</display-name>
         <web-resource-collection>
             <web-resource-name>JSF Bouncer Pages</web-resource-name>
-            <description>Accessible to admin users only</description>
+            <description>Accessible to Admin/JsfGroup users only</description>
             <url-pattern>/faces/bouncer/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description>Admin Role Required</description>
-            <role-name>PagesGroup</role-name>
+            <role-name>JsfGroup</role-name>
             <role-name>Admin</role-name>
         </auth-constraint>
     </security-constraint>

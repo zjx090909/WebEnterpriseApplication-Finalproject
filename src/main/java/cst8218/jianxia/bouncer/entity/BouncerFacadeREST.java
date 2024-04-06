@@ -50,7 +50,7 @@ public class BouncerFacadeREST extends AbstractFacade<Bouncer> {
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @RolesAllowed({"Regular", "Admin"})
+    @RolesAllowed({"RestGroup", "Admin"})
     public Bouncer create(Bouncer entity) {
     if (entity.getId() != null) {
         // If the id is not null, it is a bad request
@@ -65,6 +65,7 @@ public class BouncerFacadeREST extends AbstractFacade<Bouncer> {
     @POST
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @RolesAllowed({"RestGroup", "Admin"})
     public Response updateBouncer(@PathParam("id") Long id, Bouncer entity) {
     
     // if the entity not been exist or id does not exist, it is a bad request
@@ -92,6 +93,7 @@ public class BouncerFacadeREST extends AbstractFacade<Bouncer> {
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @RolesAllowed({"RestGroup", "Admin"})
     public void edit(@PathParam("id") Long id, Bouncer entity) {
         if (!id.equals(entity.getId())) {
             // If the Bouncer in the body of the request has a non-matching non-null id, it is a bad request
@@ -106,12 +108,14 @@ public class BouncerFacadeREST extends AbstractFacade<Bouncer> {
 
     @DELETE
     @Path("{id}")
+    @RolesAllowed({"RestGroup", "Admin"})
     public void remove(@PathParam("id") Long id) {
         super.remove(super.find(id));
     }
 
     @GET
     @Path("{id}")
+    @RolesAllowed({"RestGroup", "Admin"})
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Bouncer find(@PathParam("id") Long id) {
         return super.find(id);
@@ -120,7 +124,7 @@ public class BouncerFacadeREST extends AbstractFacade<Bouncer> {
     @GET
     @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @RolesAllowed({"Regular", "Admin"})
+    @RolesAllowed({"RestGroup", "Admin"})
     public List<Bouncer> findAll() {
         return super.findAll();
     }
@@ -128,6 +132,7 @@ public class BouncerFacadeREST extends AbstractFacade<Bouncer> {
     @GET
     @Path("{from}/{to}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @RolesAllowed({"RestGroup", "Admin"})
     public List<Bouncer> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
@@ -135,6 +140,7 @@ public class BouncerFacadeREST extends AbstractFacade<Bouncer> {
     @GET
     @Path("count")
     @Produces(MediaType.TEXT_PLAIN)
+    @RolesAllowed({"RestGroup", "Admin"})
     public String countREST() {
         return String.valueOf(super.count());
     }
